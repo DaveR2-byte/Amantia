@@ -1,9 +1,3 @@
-/*
-Name: 			Theme Base
-Written by: 	Okler Themes - (http://www.okler.net)
-Theme Version:	10.0.0
-*/
-
 // Theme
 window.theme = {};
 
@@ -275,15 +269,15 @@ window.theme.fn = {
 	/*
 	Local Environment Warning
 	*/
-	try {
-		if ("file://" === location.origin) {
-			if ($('[data-icon]').length || $('iframe').length) {
+	// try {
+	// 	if ("file://" === location.origin) {
+	// 		if ($('[data-icon]').length || $('iframe').length) {
 
-				theme.fn.showErrorMessage('Local Environment Warning', 'SVG Objects, Icons, YouTube and Vimeo Videos might not show correctly on local environment. For better result, please preview on a server.');
+	// 			theme.fn.showErrorMessage('Local Environment Warning', 'SVG Objects, Icons, YouTube and Vimeo Videos might not show correctly on local environment. For better result, please preview on a server.');
 
-			}
-		}
-	} catch (e) {}
+	// 		}
+	// 	}
+	// } catch (e) {}
 
 	/*
 	Browser Selector
