@@ -14675,7 +14675,7 @@ html.boxed .nav-secondary.sticky-active {
 
 .parallax:not(.page-header):not(.match-height):not([class*="section-height-"]) {
 	margin: 70px 0;
-	padding: 50px 0;
+	/*padding: 50px 0;*/
 }
 
 .parallax blockquote {
@@ -15380,7 +15380,7 @@ section.section {
 	background: var(--grey-100);
 	border-top: 5px solid var(--grey-100);
 	margin: 30px 0;
-	padding: 50px 0;
+	padding: 0;
 }
 
 section.section > .container {
