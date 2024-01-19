@@ -1,3 +1,18 @@
+//////////////////////////////////////////////////////
+//  MAIN THEME JS HANDLER AMANTIA WEDDINGS
+//====================================================
+//  Dave Rivera 
+//  dave@3rdevelopment.mx
+//====================================================
+//  LOG CHANGE
+//====================================================
+//  
+//  Override the to set -200 top on self.options.stickySetTop 
+//
+//
+//
+//////////////////////////////////////////////////////
+
 // Theme
 window.theme = {};
 
@@ -9403,7 +9418,8 @@ window.theme.fn = {
 
 					}
 
-					self.options.headerBody.css('top', self.options.stickySetTop);
+					self.options.headerBody.css('top', -200);
+					//self.options.headerBody.css('top', self.options.stickySetTop); Override the original size for the logo
 
 					if (self.options.stickyChangeLogo) {
 						self.changeLogo(true);
