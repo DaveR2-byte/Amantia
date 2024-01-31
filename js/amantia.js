@@ -84,7 +84,7 @@
 	// Our History Gallery
 	var clickedItem,
 		removeShowThumbsTimeout,
-		portfolioLightboxOptions = {
+		portfolioLightboxOptionsMain = {
 		type: 'inline',
 
 		fixedContentPos: true,
@@ -101,21 +101,21 @@
 
 		callbacks: {
 			open: function(){
-				$('#thumbGalleryDetail').owlCarousel().trigger('refresh.owl.carousel');
-				$('#thumbGalleryDetail').owlCarousel().trigger('to.owl.carousel', [clickedItem, 0]);
+				$('#thumbGalleryDetailMain').owlCarousel().trigger('refresh.owl.carousel');
+				$('#thumbGalleryDetailMain').owlCarousel().trigger('to.owl.carousel', [clickedItem, 0]);
 
-				$('#thumbGalleryThumbs').owlCarousel('refresh');
+				$('#thumbGalleryThumbsMain').owlCarousel('refresh');
 
 				removeShowThumbsTimeout = setTimeout(function(){
-					$('#thumbGalleryThumbs').removeClass('show-thumbs');
+					$('#thumbGalleryThumbsMain').removeClass('show-thumbs');
 				}, 3000);
 
 				$(document).on('keydown', function( event ) {
 				    if(event.keyCode == 37) {
-				        $('#thumbGalleryDetail').trigger('prev.owl')
+				        $('#thumbGalleryDetailMain').trigger('prev.owl')
 				    }
 				    if(event.keyCode == 39) {
-				        $('#thumbGalleryDetail').trigger('next.owl')
+				        $('#thumbGalleryDetailMain').trigger('next.owl')
 				    }
 				});
 
@@ -123,27 +123,241 @@
 			},
 			close: function(){
 				clearTimeout(removeShowThumbsTimeout);
-				$('#thumbGalleryThumbs').addClass('show-thumbs');
+				$('#thumbGalleryThumbsMain').addClass('show-thumbs');
+				$(document).off('keydown');
+			}
+			}
+		},
+		portfolioLightboxOptionsSecond = {
+		type: 'inline',
+
+		fixedContentPos: true,
+		fixedBgPos: true,
+
+		overflowY: 'hidden',
+
+		closeBtnInside: true,
+		preloader: false,
+
+		midClick: true,
+		removalDelay: 300,
+		mainClass: 'wedding-portfolio-gallery',
+
+		callbacks: {
+			open: function(){
+				$('#thumbGalleryDetailSecond').owlCarousel().trigger('refresh.owl.carousel');
+				$('#thumbGalleryDetailSecond').owlCarousel().trigger('to.owl.carousel', [clickedItem, 0]);
+
+				$('#thumbGalleryThumbsSecond').owlCarousel('refresh');
+
+				removeShowThumbsTimeout = setTimeout(function(){
+					$('#thumbGalleryThumbsSecond').removeClass('show-thumbs');
+				}, 3000);
+
+				$(document).on('keydown', function( event ) {
+				    if(event.keyCode == 37) {
+				        $('#thumbGalleryDetailSecond').trigger('prev.owl')
+				    }
+				    if(event.keyCode == 39) {
+				        $('#thumbGalleryDetailSecond').trigger('next.owl')
+				    }
+				});
+
+				
+			},
+			close: function(){
+				clearTimeout(removeShowThumbsTimeout);
+				$('#thumbGalleryThumbsSecond').addClass('show-thumbs');
+				$(document).off('keydown');
+			}
+			}
+		},
+		portfolioLightboxOptionsThird = {
+		type: 'inline',
+
+		fixedContentPos: true,
+		fixedBgPos: true,
+
+		overflowY: 'hidden',
+
+		closeBtnInside: true,
+		preloader: false,
+
+		midClick: true,
+		removalDelay: 300,
+		mainClass: 'wedding-portfolio-gallery',
+
+		callbacks: {
+			open: function(){
+				$('#thumbGalleryDetailThird').owlCarousel().trigger('refresh.owl.carousel');
+				$('#thumbGalleryDetailThird').owlCarousel().trigger('to.owl.carousel', [clickedItem, 0]);
+
+				$('#thumbGalleryThumbsThird').owlCarousel('refresh');
+
+				removeShowThumbsTimeout = setTimeout(function(){
+					$('#thumbGalleryThumbsThird').removeClass('show-thumbs');
+				}, 3000);
+
+				$(document).on('keydown', function( event ) {
+				    if(event.keyCode == 37) {
+				        $('#thumbGalleryDetailThird').trigger('prev.owl')
+				    }
+				    if(event.keyCode == 39) {
+				        $('#thumbGalleryDetailThird').trigger('next.owl')
+				    }
+				});
+
+				
+			},
+			close: function(){
+				clearTimeout(removeShowThumbsTimeout);
+				$('#thumbGalleryThumbsThird').addClass('show-thumbs');
 				$(document).off('keydown');
 			}
 		}
 	}
 
 	var clickedItem = '';
-	if( $('a[href="#ourHistoryLightbox"]').length ) {
-		$('a[href="#ourHistoryLightbox"]').on('click', function(){
+	if( $('a[href="#mainPhotos"]').length ) {
+		$('a[href="#mainPhotos"]').on('click', function(){
 			clickedItem = $(this).parent().index();
 		});
 
-		$('a[href="#ourHistoryLightbox"]').magnificPopup(portfolioLightboxOptions);
+		$('a[href="#mainPhotos"]').magnificPopup(portfolioLightboxOptionsMain);
+	}
+	if( $('a[href="#secondSetPhotos"]').length ) {
+		$('a[href="#secondSetPhotos"]').on('click', function(){
+			clickedItem = $(this).parent().index();
+		});
+
+		$('a[href="#secondSetPhotos"]').magnificPopup(portfolioLightboxOptionsSecond);
+	}
+	if( $('a[href="#thirdSetPhotos"]').length ) {
+		$('a[href="#thirdSetPhotos"]').on('click', function(){
+			clickedItem = $(this).parent().index();
+		});
+
+		$('a[href="#thirdSetPhotos"]').magnificPopup(portfolioLightboxOptionsThird);
 	}
 
 	/*
 	Thumb Gallery
 	*/
-	if( $('#ourHistoryLightbox').get(0) ) {
-		var $thumbGalleryDetail = $('#thumbGalleryDetail'),
-			$thumbGalleryThumbs = $('#thumbGalleryThumbs'),
+	if( $('#mainPhotos').get(0) ) {
+		var $thumbGalleryDetail = $('#thumbGalleryDetailMain'),
+			$thumbGalleryThumbs = $('#thumbGalleryThumbsMain'),
+			flag = false,
+			duration = 300;
+
+		$thumbGalleryDetail
+			.owlCarousel({
+				items: 1,
+				margin: 10,
+				nav: true,
+				dots: false,
+				loop: false,
+				navText: [],
+				rtl: (($('html[dir="rtl"]').get(0)) ? true : false),
+				onRefreshed: function(e){
+					setTimeout(function(){
+						$('.mfp-wrap.wedding-portfolio-gallery').css('opacity',1);
+					}, 300);
+				}
+			})
+			.on('changed.owl.carousel', function(e) {
+				if (!flag) {
+					flag = true;
+					$thumbGalleryThumbs.trigger('to.owl.carousel', [e.item.index-1, duration, true]);
+
+					// add class to active thumb
+					$thumbGalleryThumbs.find('.owl-item').removeClass('active-thumb');
+					$thumbGalleryThumbs.find('.owl-item:eq('+ e.item.index +')').addClass('active-thumb');
+
+					flag = false;
+				}
+			});
+
+		$thumbGalleryThumbs
+			.owlCarousel({
+				margin: 15,
+				items: 15,
+				nav: false,
+				center: false,
+				dots: false,
+				pagination: false,
+				rtl: (($('html[dir="rtl"]').get(0)) ? true : false)
+			})
+			.on('click', '.owl-item', function() {
+				$thumbGalleryDetail.trigger('to.owl.carousel', [$(this).index(), duration, true]);
+
+				// add class to active thumb
+				$thumbGalleryThumbs.find('.owl-item').removeClass('active-thumb');
+				$(this).addClass('active-thumb');
+			});
+
+		// Set first item with active-thumb
+		$thumbGalleryThumbs.find('.owl-item:eq(0)').addClass('active-thumb');
+
+	}
+	if( $('#secondSetPhotos').get(0) ) {
+		var $thumbGalleryDetail = $('#thumbGalleryDetailSecond'),
+			$thumbGalleryThumbs = $('#thumbGalleryThumbsSecond'),
+			flag = false,
+			duration = 300;
+
+		$thumbGalleryDetail
+			.owlCarousel({
+				items: 1,
+				margin: 10,
+				nav: true,
+				dots: false,
+				loop: false,
+				navText: [],
+				rtl: (($('html[dir="rtl"]').get(0)) ? true : false),
+				onRefreshed: function(e){
+					setTimeout(function(){
+						$('.mfp-wrap.wedding-portfolio-gallery').css('opacity',1);
+					}, 300);
+				}
+			})
+			.on('changed.owl.carousel', function(e) {
+				if (!flag) {
+					flag = true;
+					$thumbGalleryThumbs.trigger('to.owl.carousel', [e.item.index-1, duration, true]);
+
+					// add class to active thumb
+					$thumbGalleryThumbs.find('.owl-item').removeClass('active-thumb');
+					$thumbGalleryThumbs.find('.owl-item:eq('+ e.item.index +')').addClass('active-thumb');
+
+					flag = false;
+				}
+			});
+
+		$thumbGalleryThumbs
+			.owlCarousel({
+				margin: 15,
+				items: 15,
+				nav: false,
+				center: false,
+				dots: false,
+				pagination: false,
+				rtl: (($('html[dir="rtl"]').get(0)) ? true : false)
+			})
+			.on('click', '.owl-item', function() {
+				$thumbGalleryDetail.trigger('to.owl.carousel', [$(this).index(), duration, true]);
+
+				// add class to active thumb
+				$thumbGalleryThumbs.find('.owl-item').removeClass('active-thumb');
+				$(this).addClass('active-thumb');
+			});
+
+		// Set first item with active-thumb
+		$thumbGalleryThumbs.find('.owl-item:eq(0)').addClass('active-thumb');
+
+	}
+	if( $('#thirdSetPhotos').get(0) ) {
+		var $thumbGalleryDetail = $('#thumbGalleryDetailThird'),
+			$thumbGalleryThumbs = $('#thumbGalleryThumbsThird'),
 			flag = false,
 			duration = 300;
 
