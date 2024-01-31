@@ -85,7 +85,7 @@
 }
 
 .tp-caption-custom-1 {
-		font-family: Carry;
+		font-family: Blinds;
 		color: transparent;
 		-webkit-text-stroke: 1px #FFF;
 		text-stroke: 1px #FFF;
@@ -93,6 +93,11 @@
 }
 
 .tp-caption-custom-2 {
+		font-family: Blinds;
+		color: var(--light);
+}
+
+.tp-caption-custom-3 {
 		font-family: Carry;
 		color: var(--light);
 }
