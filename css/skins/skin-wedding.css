@@ -23,7 +23,7 @@
 	--primary-rgba-70: rgba(96, 99, 92, 0.7);
 	--primary-rgba-80: rgba(96, 99, 92, 0.8);
 	--primary-rgba-90: rgba(96, 99, 92, 0.9);
-	--secondary: #f4f0ed;
+	--secondary: #FFEEEF;
 	--secondary-100: #eae3dd;
 	--secondary-200: #e5dcd5;
 	--secondary-300: #e1d6cd;
@@ -108,6 +108,7 @@
 	--light-rgba-70: rgba(255, 255, 255, 0.7);
 	--light-rgba-80: rgba(255, 255, 255, 0.8);
 	--light-rgba-90: rgba(255, 255, 255, 0.9);
+	--primary-title: #01193D;
 }
 /* Skin Colors - Inverse */
 :root {

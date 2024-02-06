@@ -10,6 +10,7 @@
 
 .custom-font-1 {
 		font-family: Blinds;
+		color: #01193D;
 }
 
 .custom-font-2 {
@@ -31,6 +32,10 @@
 
 .custom-font-size-4 {
 		font-size: 0.6em !important;
+}
+
+.custom-font-size-5 {
+		font-size: 4em !important;
 }
 
 .custom-logo {

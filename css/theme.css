@@ -7844,7 +7844,7 @@ html[xmlns] .clearfix {
 
 /* Text - Skin */
 .text-color-primary, .text-primary {
-	color: var(--primary) !important;
+	color: var(--primary-title) !important;
 }
 
 .text-color-primary-100, .text-primary-100 {
@@ -12785,11 +12785,11 @@ html body .rounded-circle {
 
 /* #Footer */
 #footer {
-	/* background: var(--dark); */
+	background: #01193D;
 	font-size: 1.2em;
 	padding: 0;
 	position: relative;
-	height: 40px;
+	height: 60px;
 	clear: both;
 }
 

@@ -14617,8 +14617,11 @@ html.boxed .nav-secondary.sticky-active {
 
 /* Overlay - Skin */
 .overlay-color-primary:not(.no-skin):before {
-	background-color: var(--primary) !important;
+	background-color: #01193D !important;
 }
+/* .overlay-color-primary:not(.no-skin):before {
+	background-color: var(--primary) !important;
+} */
 
 .overlay-color-secondary:not(.no-skin):before {
 	background-color: var(--secondary) !important;
