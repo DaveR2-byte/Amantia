@@ -51,6 +51,43 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="css/custom.css">
 
+		<!-- Email component -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+		<script type="text/javascript">
+			(function(){
+				emailjs.init('u4dPlczrS451JC0wt')
+			})();
+		</script>
+		<script type="text/javascript">
+			const sendEmail = () => {
+
+				var names = document.getElementById('nombreNovios').value;
+				var planner = document.getElementById('planner').value;
+				var city = document.getElementById('city').value;
+				var place = document.getElementById('place').value;
+				var email = document.getElementById('email').value;
+				var date = document.getElementById('date').value;
+				var services = document.getElementById('services').value;
+				var findUs = document.getElementById('findUs').value;
+				var messageOk = document.getElementById('successSend')
+				var messageError = document.getElementById('errorSend')
+
+				var params = {
+					message: `Nombre Novios: ${names} \n Planner: ${planner} \n Ciudad: ${city} \n Lugar: ${place} \n Email: ${email} \n Fecha: ${date} \n Servicios: ${services} \n ¿Donde nos conociste? : ${findUs}`,
+				}
+
+				emailjs.send('service_ojg8b7m','template_qa13ooa',params).then(function(res){
+					if(res.status == 200){
+						console.log('success')
+						messageOk.classList.remove('d-none');
+					}else{
+						console.log('error')
+						messageError.classList.remove('d-none');
+					}
+				})
+			};
+		</script>
+
 	</head>
 	<body data-plugin-scroll-spy data-plugin-options="{'target': '#header'}">
 
@@ -956,34 +993,34 @@
 							<div class="row justify-content-center py-3">
 								<div class="col">
 
-									<form class="contact-form form-style-4 form-style-4-text-dark mb-8" action="php/contact-form.php" method="POST">
-										<div class="contact-form-success alert alert-success d-none mt-4">
+									<form class="contact-form form-style-4 form-style-4-text-dark mb-8" id="contact-form">
+										<div id="successSend" class="alert alert-success d-none mt-4">
 											<strong>Success!</strong> Your message has been sent to us.
 										</div>
 
-										<div class="contact-form-error alert alert-danger d-none mt-4">
+										<div id="errorSend" class="alert alert-danger d-none mt-4">
 											<strong>Error!</strong> There was an error sending your message.
 											<span class="mail-error-message text-1 d-block"></span>
 										</div>
 
 										<div class="row">
 											<div class="form-group col-lg-4 pt-2">
-												<input type="text" value="" data-msg-required="Nombres de la Novia y el Novio" maxlength="100" class="form-control text-3 h-auto py-2" name="name" placeholder="Nombres de la Novia y el Novio" required>
+												<input type="text" value="" id="nombreNovios" data-msg-required="Nombres de la Novia y el Novio" maxlength="100" class="form-control text-3 h-auto py-2" name="name" placeholder="Nombres de la Novia y el Novio" required>
 											</div>
 											<div class="form-group col-lg-4 pt-2">
-												<input type="text" value="" data-msg-required="Wedding Planner" maxlength="100" class="form-control text-3 h-auto py-2" name="weddingPlanner" placeholder="Wedding Planner" required>
+												<input type="text" value="" id="planner" data-msg-required="Wedding Planner" maxlength="100" class="form-control text-3 h-auto py-2" name="weddingPlanner" placeholder="Wedding Planner" required>
 											</div>
 											<div class="form-group col-lg-4 pt-2">
-												<input type="text" value="" data-msg-required="Ciudad/Estado" maxlength="100" class="form-control text-3 h-auto py-2" name="city" placeholder="Ciudad/Estado" required>
+												<input type="text" value="" id="city" data-msg-required="Ciudad/Estado" maxlength="100" class="form-control text-3 h-auto py-2" name="city" placeholder="Ciudad/Estado" required>
 											</div>
 											<div class="form-group col-lg-4 pt-2">
-												<input type="text" value="" data-msg-required="Lugar de la Boda" maxlength="100" class="form-control text-3 h-auto py-2" name="venue" placeholder="Lugar de la Boda" required>
+												<input type="text" value="" id="place" data-msg-required="Lugar de la Boda" maxlength="100" class="form-control text-3 h-auto py-2" name="venue" placeholder="Lugar de la Boda" required>
 											</div>
 											<div class="form-group col-lg-4 pt-2">
-												<input type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control text-3 h-auto py-2" name="email" placeholder="Email Address" required>
+												<input type="email" value="" id="email" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control text-3 h-auto py-2" name="email" placeholder="Email Address" required>
 											</div>
 											<div class="form-group col-lg-4 pt-2">
-												<input type="text" value="" data-msg-required="Fecha evento" maxlength="100" class="form-control text-3 h-auto py-2" name="date" placeholder="Fecha del Evento" required>
+												<input type="text" value="" id="date" data-msg-required="Fecha evento" maxlength="100" class="form-control text-3 h-auto py-2" name="date" placeholder="Fecha del Evento" required>
 											</div>
 											<div class="form-group col-lg-6 pt-2">
 												<select class="form-select form-control text-3 h-auto py-2" name="services" data-msg-required="This field is required." id="services" required="">
@@ -1006,7 +1043,7 @@
 										<br>
 										<div class="col-lg-2 mt-8">
 											<div class="d-grid gap-2">
-												<input type="submit" value="Enviar" class="btn btn-primary border-0 font-weight-semibold text-uppercase px-5 py-3" data-loading-text="Loading...">
+												<input type="submit" onclick='sendEmail()' value="Enviar" class="btn btn-primary border-0 font-weight-semibold text-uppercase px-5 py-3" data-loading-text="Loading...">
 											</div>
 										</div>
 									</form>
