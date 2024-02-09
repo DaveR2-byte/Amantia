@@ -12,3 +12,23 @@
 .footer-link:hover{
     color: #FFEEEF !important;
 }
+
+.show-video{
+    position: absolute;
+    top: 50%;  
+    left: 50%; 
+    transform: translate(-50%, -50%);    
+    z-index: 1000;
+}
+
+    .show-video iframe{
+        width: 1000px;
+        height: 600px;
+    }
+
+    .show-video .btn{
+        background-color: #01193d;
+        width: 20%;
+        color: #FFEEEF;
+        margin-top: 2%;
+    }

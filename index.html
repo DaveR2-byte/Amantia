@@ -86,6 +86,61 @@
 					}
 				})
 			};
+
+			const showVideo = (id) => {
+				let video1 = document.getElementById('video-1')
+				let video2 = document.getElementById('video-2')
+				let video3 = document.getElementById('video-3')
+				let video4 = document.getElementById('video-4')
+				let popup = document.getElementById('popUp')
+
+				popup.classList.remove('d-none')
+
+				document.getElementById('videoGallery').style.filter = 'blur(3px)'
+
+				switch(id){
+					case 1:
+						video1.style.display = 'block';
+						video2.style.display = 'none';
+						video3.style.display = 'none';
+						video4.style.display = 'none';
+						break;
+					case 2:
+						video1.style.display = 'none';
+						video2.style.display = 'block';
+						video3.style.display = 'none';
+						video4.style.display = 'none';
+						break;
+					case 3:
+						video1.style.display = 'none';
+						video2.style.display = 'none';
+						video3.style.display = 'block';
+						video4.style.display = 'none';
+						break;
+					case 4:
+						video1.style.display = 'none';
+						video2.style.display = 'none';
+						video3.style.display = 'none';
+						video4.style.display = 'block';
+						break;
+
+				}
+
+			};
+
+			const closeVideo = () => {
+				document.getElementById('video-1').style.display = 'none';
+				document.getElementById('video-2').style.display = 'none';
+				document.getElementById('video-3').style.display = 'none';
+				document.getElementById('video-4').style.display = 'none';
+				document.getElementById('popUp').classList.add('d-none');
+				document.getElementById('videoGallery').style.filter = 'blur(0)'
+				document.getElementById('video-1').contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');
+				document.getElementById('video-2').contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');
+				document.getElementById('video-3').contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');
+				document.getElementById('video-4').contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');
+			};
+
 		</script>
 
 	</head>
@@ -830,8 +885,19 @@
 
 					<!-- Videos -->
 
+					
 					<section class="section bg-transparent border-0 pt-3 pb-0 mb-0 p-relative overflow-hidden" id="videos">
-						<div class="container pt-2 pb-5 mb-3">
+						<div id="popUp" class="show-video d-none" >
+							<div class="row justify-content-center">
+								<iframe id="video-1" src="https://www.youtube.com/embed/-INyH1_yIW8?si=SmKu5fUqujSlpwoF&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="display: none;"></iframe>
+								<iframe id="video-2" src="https://www.youtube.com/embed/G9DRp1iULpQ?si=CEndsAEcplz77Qn3&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="display: none;"></iframe>								
+								<iframe id="video-3" src="https://www.youtube.com/embed/OcqHt7XYwrU?si=f90Hu0Xg-vhmyBLA&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="display: none;"></iframe>							
+								<iframe id="video-4" src="https://www.youtube.com/embed/ADwdBMEbQhc?si=X_Ro96qeuPht4ICx&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="display: none;"></iframe>
+								<input onclick='closeVideo()' value="Cerrar" class="btn text-uppercase">
+							</div>
+						</div>
+
+						<div id="videoGallery" class="container pt-2 pb-5 mb-3">
 							<div class="row justify-content-center">
 								<div class="col-lg-9 text-center">
 									<h2 class="custom-font-1 custom-font-size-1 text-color-primary ls-0 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="200">Videos</h2>
@@ -839,7 +905,8 @@
 							</div>
 							<div class="row pt-3 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="600">
 								<div class="col-md-6 mb-4 mb-lg-0">
-									<a href="https://www.youtube.com/watch?v=-INyH1_yIW8">
+									<!-- <a href="https://www.youtube.com/watch?v=-INyH1_yIW8"> -->
+									<a onclick="showVideo(1)">
 										<span class="thumb-info custom-thumb-info-style-1 thumb-info-no-borders thumb-info-no-borders-rounded">
 											<span class="thumb-info-wrapper">
 												<img src="img/thumbVid1.png" alt="thumbVid1.png" class="img-fluid">
@@ -853,7 +920,7 @@
 									<p class="d-block positive-ls-3 text-uppercase text-2 pt-3 mb-0 line-height-4">Fer & Paul - Nov 2023</p>
 								</div>
 								<div class="col-md-6 mb-4 mb-lg-0">
-									<a href="https://www.youtube.com/watch?v=G9DRp1iULpQ">
+									<a onclick="showVideo(2)">
 										<span class="thumb-info custom-thumb-info-style-1 thumb-info-no-borders thumb-info-no-borders-rounded">
 											<span class="thumb-info-wrapper">
 												<img src="img/thumbVid2.png" alt="" class="img-fluid">
@@ -867,7 +934,7 @@
 									<p class="d-block positive-ls-3 text-uppercase text-2 pt-3 mb-0 line-height-4">Elena & Ezequiel - Oct 2023</p>
 								</div>
 								<div class="col-md-6 mb-4 mt-4 mb-lg-0">
-									<a href="https://www.youtube.com/watch?v=OcqHt7XYwrU">
+									<a onclick="showVideo(3)">
 										<span class="thumb-info custom-thumb-info-style-1 thumb-info-no-borders thumb-info-no-borders-rounded">
 											<span class="thumb-info-wrapper">
 												<img src="img/thumbVid3.png" alt="" class="img-fluid">
@@ -881,7 +948,7 @@
 									<p class="d-block positive-ls-3 text-uppercase text-2 pt-3 mb-0 line-height-4">Naysin & Cris - Sep 2023</p>
 								</div>
 								<div class="col-md-6 mb-4 mt-4 mb-lg-0">
-									<a href="https://www.youtube.com/watch?v=ADwdBMEbQhc">
+									<a onclick="showVideo(4)">
 										<span class="thumb-info custom-thumb-info-style-1 thumb-info-no-borders thumb-info-no-borders-rounded">
 											<span class="thumb-info-wrapper">
 												<img src="img/thumbVid4.png" alt="" class="img-fluid">
