@@ -38,3 +38,32 @@ iframe{
     height: 100em !important;
     padding: 5%;
 }
+
+@media  (max-width:600px) {
+    .header-logo img{
+        width: 100%;
+        height: 100px;
+        margin-bottom: -10px;
+    }
+
+    .forcefullwidth_wrapper_tp_banner video{
+        width: 1200px !important;
+        margin-left: -330px !important;
+    }
+
+    .tp-caption.tp-caption-custom-3.tp-resizeme{
+        font-size: 60px !important;
+        padding-bottom: 150px;
+    }
+    
+    iframe{
+        width: 100%;
+        height: 30em !important;
+        padding: 5%;
+    }
+
+    footer{
+        height: 150px !important;
+    }
+    
+}
