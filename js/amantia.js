@@ -172,7 +172,7 @@
 			}
 			}
 		},
-		portfolioLightboxOptionsThird = {
+		portfolioLightboxOptionsFirstVideo = {
 		type: 'inline',
 
 		fixedContentPos: true,
@@ -189,33 +189,134 @@
 
 		callbacks: {
 			open: function(){
-				$('#thumbGalleryDetailThird').owlCarousel().trigger('refresh.owl.carousel');
-				$('#thumbGalleryDetailThird').owlCarousel().trigger('to.owl.carousel', [clickedItem, 0]);
-
-				$('#thumbGalleryThumbsThird').owlCarousel('refresh');
-
-				removeShowThumbsTimeout = setTimeout(function(){
-					$('#thumbGalleryThumbsThird').removeClass('show-thumbs');
-				}, 3000);
+				$('#thumbGalleryDetailFirstVideo').owlCarousel().trigger('refresh.owl.carousel');
+				$('#thumbGalleryDetailFirstVideo').owlCarousel().trigger('to.owl.carousel', [clickedItem, 0]);
 
 				$(document).on('keydown', function( event ) {
 				    if(event.keyCode == 37) {
-				        $('#thumbGalleryDetailThird').trigger('prev.owl')
+				        $('#thumbGalleryDetailFirstVideo').trigger('prev.owl')
 				    }
 				    if(event.keyCode == 39) {
-				        $('#thumbGalleryDetailThird').trigger('next.owl')
+				        $('#thumbGalleryDetailFirstVideo').trigger('next.owl')
 				    }
 				});
 
-				
 			},
 			close: function(){
 				clearTimeout(removeShowThumbsTimeout);
-				$('#thumbGalleryThumbsThird').addClass('show-thumbs');
 				$(document).off('keydown');
 			}
+			}
+		},
+		portfolioLightboxOptionsSecondVideo = {
+		type: 'inline',
+
+		fixedContentPos: true,
+		fixedBgPos: true,
+
+		overflowY: 'hidden',
+
+		closeBtnInside: true,
+		preloader: false,
+
+		midClick: true,
+		removalDelay: 300,
+		mainClass: 'wedding-portfolio-gallery',
+
+		callbacks: {
+			open: function(){
+				$('#thumbGalleryDetailSecondVideo').owlCarousel().trigger('refresh.owl.carousel');
+				$('#thumbGalleryDetailSecondVideo').owlCarousel().trigger('to.owl.carousel', [clickedItem, 0]);
+
+				$(document).on('keydown', function( event ) {
+				    if(event.keyCode == 37) {
+				        $('#thumbGalleryDetailSecondVideo').trigger('prev.owl')
+				    }
+				    if(event.keyCode == 39) {
+				        $('#thumbGalleryDetailSecondVideo').trigger('next.owl')
+				    }
+				});
+
+			},
+			close: function(){
+				clearTimeout(removeShowThumbsTimeout);
+				$(document).off('keydown');
+			}
+			}
+		},
+		portfolioLightboxOptionsThirdVideo = {
+		type: 'inline',
+
+		fixedContentPos: true,
+		fixedBgPos: true,
+
+		overflowY: 'hidden',
+
+		closeBtnInside: true,
+		preloader: false,
+
+		midClick: true,
+		removalDelay: 300,
+		mainClass: 'wedding-portfolio-gallery',
+
+		callbacks: {
+			open: function(){
+				$('#thumbGalleryDetailThirdVideo').owlCarousel().trigger('refresh.owl.carousel');
+				$('#thumbGalleryDetailThirdVideo').owlCarousel().trigger('to.owl.carousel', [clickedItem, 0]);
+
+				$(document).on('keydown', function( event ) {
+				    if(event.keyCode == 37) {
+				        $('#thumbGalleryDetailThirdVideo').trigger('prev.owl')
+				    }
+				    if(event.keyCode == 39) {
+				        $('#thumbGalleryDetailThirdVideo').trigger('next.owl')
+				    }
+				});
+
+			},
+			close: function(){
+				clearTimeout(removeShowThumbsTimeout);
+				$(document).off('keydown');
+			}
+			}
+		},
+		portfolioLightboxOptionsFourthVideo = {
+		type: 'inline',
+
+		fixedContentPos: true,
+		fixedBgPos: true,
+
+		overflowY: 'hidden',
+
+		closeBtnInside: true,
+		preloader: false,
+
+		midClick: true,
+		removalDelay: 300,
+		mainClass: 'wedding-portfolio-gallery',
+
+		callbacks: {
+			open: function(){
+				$('#thumbGalleryDetailFourthVideo').owlCarousel().trigger('refresh.owl.carousel');
+				$('#thumbGalleryDetailFourthVideo').owlCarousel().trigger('to.owl.carousel', [clickedItem, 0]);
+
+				$(document).on('keydown', function( event ) {
+				    if(event.keyCode == 37) {
+				        $('#thumbGalleryDetailFourthVideo').trigger('prev.owl')
+				    }
+				    if(event.keyCode == 39) {
+				        $('#thumbGalleryDetailFourthVideo').trigger('next.owl')
+				    }
+				});
+
+			},
+			close: function(){
+				clearTimeout(removeShowThumbsTimeout);
+				$(document).off('keydown');
+			}
+			}
 		}
-	}
+
 
 	var clickedItem = '';
 	if( $('a[href="#mainPhotos"]').length ) {
@@ -232,12 +333,33 @@
 
 		$('a[href="#secondSetPhotos"]').magnificPopup(portfolioLightboxOptionsSecond);
 	}
-	if( $('a[href="#thirdSetPhotos"]').length ) {
-		$('a[href="#thirdSetPhotos"]').on('click', function(){
+	if( $('a[href="#firstVideo"]').length ) {
+		$('a[href="#firstVideo"]').on('click', function(){
 			clickedItem = $(this).parent().index();
 		});
 
-		$('a[href="#thirdSetPhotos"]').magnificPopup(portfolioLightboxOptionsThird);
+		$('a[href="#firstVideo"]').magnificPopup(portfolioLightboxOptionsFirstVideo);
+	}
+	if( $('a[href="#secondVideo"]').length ) {
+		$('a[href="#secondVideo"]').on('click', function(){
+			clickedItem = $(this).parent().index();
+		});
+
+		$('a[href="#secondVideo"]').magnificPopup(portfolioLightboxOptionsSecondVideo);
+	}
+	if( $('a[href="#thirdVideo"]').length ) {
+		$('a[href="#thirdVideo"]').on('click', function(){
+			clickedItem = $(this).parent().index();
+		});
+
+		$('a[href="#thirdVideo"]').magnificPopup(portfolioLightboxOptionsThirdVideo);
+	}
+	if( $('a[href="#fourthVideo"]').length ) {
+		$('a[href="#fourthVideo"]').on('click', function(){
+			clickedItem = $(this).parent().index();
+		});
+
+		$('a[href="#fourthVideo"]').magnificPopup(portfolioLightboxOptionsFourthVideo);
 	}
 
 	/*
@@ -353,6 +475,94 @@
 
 		// Set first item with active-thumb
 		$thumbGalleryThumbs.find('.owl-item:eq(0)').addClass('active-thumb');
+
+	}
+	if( $('#firstVideo').get(0) ) {
+		var $thumbGalleryDetail = $('#thumbGalleryDetailFirstVideo'),
+			flag = false,
+			duration = 300;
+
+		$thumbGalleryDetail
+			.owlCarousel({
+				items: 1,
+				margin: 10,
+				nav: true,
+				dots: false,
+				loop: false,
+				navText: [],
+				rtl: (($('html[dir="rtl"]').get(0)) ? true : false),
+				onRefreshed: function(e){
+					setTimeout(function(){
+						$('.mfp-wrap.wedding-portfolio-gallery').css('opacity',1);
+					}, 300);
+				}
+			});
+
+	}
+	if( $('#secondVideo').get(0) ) {
+		var $thumbGalleryDetail = $('#thumbGalleryDetailSecondVideo'),
+			flag = false,
+			duration = 300;
+
+		$thumbGalleryDetail
+			.owlCarousel({
+				items: 1,
+				margin: 10,
+				nav: true,
+				dots: false,
+				loop: false,
+				navText: [],
+				rtl: (($('html[dir="rtl"]').get(0)) ? true : false),
+				onRefreshed: function(e){
+					setTimeout(function(){
+						$('.mfp-wrap.wedding-portfolio-gallery').css('opacity',1);
+					}, 300);
+				}
+			});
+
+	}
+	if( $('#thirdVideo').get(0) ) {
+		var $thumbGalleryDetail = $('#thumbGalleryDetailThirdVideo'),
+			flag = false,
+			duration = 300;
+
+		$thumbGalleryDetail
+			.owlCarousel({
+				items: 1,
+				margin: 10,
+				nav: true,
+				dots: false,
+				loop: false,
+				navText: [],
+				rtl: (($('html[dir="rtl"]').get(0)) ? true : false),
+				onRefreshed: function(e){
+					setTimeout(function(){
+						$('.mfp-wrap.wedding-portfolio-gallery').css('opacity',1);
+					}, 300);
+				}
+			});
+
+	}
+	if( $('#fourthVideo').get(0) ) {
+		var $thumbGalleryDetail = $('#thumbGalleryDetailFourthVideo'),
+			flag = false,
+			duration = 300;
+
+		$thumbGalleryDetail
+			.owlCarousel({
+				items: 1,
+				margin: 10,
+				nav: true,
+				dots: false,
+				loop: false,
+				navText: [],
+				rtl: (($('html[dir="rtl"]').get(0)) ? true : false),
+				onRefreshed: function(e){
+					setTimeout(function(){
+						$('.mfp-wrap.wedding-portfolio-gallery').css('opacity',1);
+					}, 300);
+				}
+			});
 
 	}
 }).apply( this, [ jQuery ]);

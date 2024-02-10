@@ -32,3 +32,8 @@
         color: #FFEEEF;
         margin-top: 2%;
     }
+
+iframe{
+    width: 90%;
+    height: 60em !important;
+}
