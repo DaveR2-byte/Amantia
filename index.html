@@ -69,11 +69,12 @@
 				var date = document.getElementById('date').value;
 				var services = document.getElementById('services').value;
 				var findUs = document.getElementById('findUs').value;
+				var phone = document.getElementById('phone').value;
 				var messageOk = document.getElementById('successSend')
 				var messageError = document.getElementById('errorSend')
 
 				var params = {
-					message: `Nombre Novios: ${names} \n Planner: ${planner} \n Ciudad: ${city} \n Lugar: ${place} \n Email: ${email} \n Fecha: ${date} \n Servicios: ${services} \n ¿Donde nos conociste? : ${findUs}`,
+					message: `Nombre Novios: ${names} \n Planner: ${planner} \n Ciudad: ${city} \n Lugar: ${place} \n Email: ${email} \n Fecha: ${date} \n Servicios: ${services} \n ¿Donde nos conociste? : ${findUs} \n Telefono de contacto: ${phone}`,
 				}
 
 				emailjs.send('service_ojg8b7m','template_qa13ooa',params).then(function(res){
