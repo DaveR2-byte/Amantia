@@ -55,6 +55,11 @@ iframe{
         font-size: 60px !important;
         padding-bottom: 150px;
     }
+
+    .tp-caption.tp-caption-custom-2.tp-resizeme{
+        font-size: 60px !important;
+        padding-bottom: 40px;
+    }
     
     iframe{
         width: 100%;
